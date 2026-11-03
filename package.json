@@ -1,0 +1,23 @@
+{
+  "name": "jmrh-2911-outreach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official website for JMRH 29:11 Outreach",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "validate-data": "node scripts/validate-resources.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.28",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}

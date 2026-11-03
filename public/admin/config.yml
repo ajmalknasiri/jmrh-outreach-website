@@ -1,0 +1,107 @@
+# Decap CMS configuration — the admin editor at /admin
+# See README.md → "Updating resources (admin)" for setup.
+
+backend:
+  name: git-gateway        # Netlify Identity login. For other hosts, see README.
+  branch: main
+
+# Lets you test the editor on your own computer with `npx decap-server`
+local_backend: true
+
+# Every change is saved as a draft for review before it goes live
+publish_mode: editorial_workflow
+
+media_folder: public/uploads
+public_folder: /uploads
+
+site_url: /
+logo_url: /logo-placeholder.svg
+
+collections:
+  - name: directory
+    label: Resource Directory
+    editor:
+      preview: false
+    files:
+      - name: resources
+        label: Resources
+        file: src/data/resources.json
+        format: json
+        fields:
+          - { name: schemaVersion, label: "Schema version (do not change)", widget: hidden, default: 1 }
+          - name: dataVersion
+            label: "Data version (update to today's date when you make changes)"
+            widget: string
+            hint: "Format: YYYY-MM-DD"
+          - name: resources
+            label: Resources
+            label_singular: Resource
+            widget: list
+            summary: "{{fields.name}} — {{fields.region}}"
+            collapsed: true
+            fields:
+              - name: id
+                label: "ID (short, lowercase, dashes — never change once published)"
+                widget: string
+                pattern: ["^[a-z0-9-]+$", "Use lowercase letters, numbers, and dashes only"]
+              - { name: name, label: Organization name, widget: string }
+              - name: isActive
+                label: "Show on website"
+                widget: boolean
+                default: true
+                hint: "Turn off to hide an outdated listing without deleting it."
+              - name: region
+                label: Area
+                widget: select
+                options:
+                  - { label: "San Jose", value: "san-jose" }
+                  - { label: "San Francisco", value: "san-francisco" }
+                  - { label: "Hayward, Castro Valley & Fremont", value: "hayward-castro-valley-fremont" }
+                  - { label: "Palo Alto, Mountain View & East Palo Alto", value: "palo-alto-mountain-view-east-palo-alto" }
+                  - { label: "All areas (shows everywhere)", value: "all" }
+              - name: categories
+                label: Types of help
+                widget: select
+                multiple: true
+                min: 1
+                options:
+                  - { label: "Emergency Shelter", value: "emergency-shelter" }
+                  - { label: "Food and Meals", value: "food" }
+                  - { label: "Medical Care", value: "medical" }
+                  - { label: "Mental Health and Wellness", value: "mental-health" }
+                  - { label: "Showers and Laundry", value: "showers-laundry" }
+                  - { label: "Housing Navigation", value: "housing" }
+                  - { label: "Hygiene and Basic Necessities", value: "hygiene" }
+                  - { label: "Social Services", value: "social-services" }
+                  - { label: "General Assistance", value: "general" }
+              - { name: description, label: Short description, widget: text }
+              - name: locationType
+                label: Location type
+                widget: select
+                default: fixed
+                options:
+                  - { label: "Fixed address (shows Directions button)", value: "fixed" }
+                  - { label: "Phone-based service (no address)", value: "phone-only" }
+                  - { label: "Mobile / rotating locations", value: "mobile" }
+              - name: address
+                label: Address
+                widget: object
+                fields:
+                  - { name: street, label: "Street (or a description like 'Rotating locations in Santa Clara County')", widget: string }
+                  - { name: city, label: "City (leave blank for phone/mobile services)", widget: string, required: false }
+                  - { name: state, label: State, widget: string, default: "CA" }
+                  - { name: postalCode, label: "ZIP code", widget: string, required: false }
+              - name: phone
+                label: "Phone (digits only, e.g. 4085392100)"
+                widget: string
+                pattern: ["^[0-9]{3}$|^[0-9]{10}$", "Enter 10 digits, or a 3-digit number like 211"]
+              - { name: website, label: "Website (full link starting with https://)", widget: string, required: false }
+              - { name: availabilityNotes, label: "Service notes (hours, eligibility reminders)", widget: text, required: false }
+              - name: lastVerified
+                label: "Last verified by our team"
+                widget: datetime
+                required: false
+                date_format: "YYYY-MM-DD"
+                time_format: false
+                format: "YYYY-MM-DD"
+                hint: "Set this to today after calling to confirm the details."
