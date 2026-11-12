@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: { card: "summary" },
-  icons: { icon: site.logo.src },
 };
 
 export const viewport: Viewport = {

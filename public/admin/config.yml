@@ -15,7 +15,7 @@ media_folder: public/uploads
 public_folder: /uploads
 
 site_url: /
-logo_url: /logo-placeholder.svg
+logo_url: /logo.png
 
 collections:
   - name: directory

@@ -37,7 +37,7 @@ export function Header() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={site.logo.src}
-            alt={site.logo.isPlaceholder ? "" : site.logo.alt}
+            alt="" /* name is in the text next to it */
             width={site.logo.width}
             height={site.logo.height}
           />

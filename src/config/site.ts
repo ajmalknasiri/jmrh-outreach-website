@@ -9,15 +9,15 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 
   /**
-   * LOGO: put the official logo file in /public (e.g. /public/logo.png)
-   * and change `src` below. Set `isPlaceholder` to false once the real logo is in.
+   * LOGO: the official logo lives at /public/logo.png. To change it, replace
+   * that file (keep it square) or point `src` at a new file in /public.
    */
   logo: {
-    src: "/logo-placeholder.svg",
+    src: "/logo.png",
     alt: "JMRH 29:11 Outreach logo",
     width: 48,
     height: 48,
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
 
   tagline: "Connecting Our Community to Care, Resources, and Hope.",

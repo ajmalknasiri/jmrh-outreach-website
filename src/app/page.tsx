@@ -70,13 +70,16 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          {/* PHOTO PLACEHOLDER: replace with an organization-approved outreach photo (with consent from anyone pictured). */}
-          <div className="hero__media" role="img" aria-label="Photo placeholder">
-            <div>
-              <strong>Photo coming soon</strong>
-              Space reserved for an organization-approved community outreach photo.
-            </div>
-          </div>
+          {/* To use a real photo later: put it in /public and change src (use only consented, dignified photos). */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="hero__art"
+            src="/hero-illustration.svg"
+            alt="Illustration of a map pin with a heart, connected to shelter, food, medical care, and shower services over Bay Area hills"
+            width={800}
+            height={600}
+            fetchPriority="high"
+          />
         </div>
         <div className="hero-help-strip">
           <div className="container">

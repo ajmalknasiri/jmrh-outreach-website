@@ -138,7 +138,7 @@ To add a new category or region, update both `src/lib/resources.ts` and `public/
 
 | To change… | Edit |
 |---|---|
-| Logo | Put the file in `public/` (e.g. `public/logo.png`), update `logo.src` and set `isPlaceholder: false` in `src/config/site.ts` |
+| Logo | Replace `public/logo.png` (keep it square). Browser-tab icons are `src/app/icon.png` and `src/app/apple-icon.png` |
 | Email, footer text, social links, donation link, wound-care PDF | `src/config/site.ts` |
 | Colors / fonts | Top of `src/app/globals.css` (`:root` variables) |
 | Page text | `src/app/<page>/page.tsx` (e.g. `src/app/about/page.tsx`) |
@@ -156,7 +156,6 @@ To add a new category or region, update both `src/lib/resources.ts` and `public/
 ---
 
 ## Before launch checklist
-- [ ] Replace the logo placeholder
 - [ ] Re-verify every phone number and address by calling (then set `lastVerified`)
 - [ ] Configure contact email and send a test message
 - [ ] Review Privacy Policy and Terms (remove the "Draft" boxes)
